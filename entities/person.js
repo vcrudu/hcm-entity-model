@@ -1,6 +1,6 @@
 var assert = require("assert");
 (function(){
-    exports.User = function(args){
+    exports.Person = function(args){
 
     };
 })(exports);
