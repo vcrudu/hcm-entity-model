@@ -5,5 +5,10 @@
     "grunt": "*",
     "grunt-contrib-jshint": "*",
     "grunt-contrib-watch": "*"
+  },
+  "dependencies": {
+    "node-uuid": "^1.4.2",
+    "should": "^4.6.2",
+    "underscore": "^1.7.0"
   }
 }

@@ -4,10 +4,10 @@
 module.exports=function(grunt){
     grunt.initConfig({
         jshint:{
-            files: ['lib/**/*js','domainmodel/**/*js']
+            files: ['lib/**/*js','entities/**/*js','test/**/*js']
         },
         watch :{
-            files: ['lib/**/*js','domainmodel/**/*js'],
+            files: ['lib/**/*js','entities/**/*js','test/**/*js'],
             tasks: ['jshint']
         }
     });
