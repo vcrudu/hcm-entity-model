@@ -16,8 +16,8 @@ var _ = require('underscore');
         }
 
         relevantContact.addContactDetail = function(contactType, contact){
-            assert.ok(args.contactType, "Contact type is required!");
-            assert.ok(args.contact, "Contact is required!");
+            assert.ok(contactType, "Contact type is required!");
+            assert.ok(contact, "Contact is required!");
             var contactDetail = _.find(this.contactDetails,function(contactType){return contactType.contactType==contactType;});
             if(contactDetail){
                 contactDetail.contact = contact;

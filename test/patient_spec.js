@@ -34,7 +34,6 @@ describe("Patient", function () {
                 contactType: "Mobile",
                 contact: "07512345678"
             });
-            patient.relevantContacts
         });
 
         it("Has Id", function () {
