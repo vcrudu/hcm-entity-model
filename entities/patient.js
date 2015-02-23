@@ -17,7 +17,7 @@ var RelevantContact = require("./relevantContact");
         assert.ok(args.phone||args.mobile,"Phone or mobile number is required!");
         var patient = {};
         if(args.id) {
-            uuid.
+            //TODO-HC assert the id is valid v4 uuid
             patient.id = args.id;
         }else{
             patient.id = uuid.v4();

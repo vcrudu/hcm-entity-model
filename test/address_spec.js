@@ -1,5 +1,4 @@
 var should = require('should');
-var assert = require("assert");
 var Address = require("../entities/address");
 
 describe("Address", function () {
@@ -11,6 +10,10 @@ describe("Address", function () {
                 town:"Great London", county:"London", country:"United Kingdom",
                 longitude:-0.158995,latitude:51.519912,
                 postCode:"W1H 2JL"});
+        });
+
+        it("Has id", function () {
+            /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i.test(address.id).should.be.true;
         });
 
         it("Has address line 1", function () {

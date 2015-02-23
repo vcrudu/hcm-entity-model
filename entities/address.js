@@ -1,4 +1,5 @@
 var assert = require("assert");
+var uuid = require("node-uuid");
 (function(){
     module.exports = function(args){
         assert.ok(args.addressLine1,"Address line 1 is required!");
@@ -9,6 +10,11 @@ var assert = require("assert");
         assert.ok(args.postCode,"Post code is required!");
 
         var address = {};
+        if(args.id) {
+            address.id = args.id;
+        }else{
+            address.id = uuid.v4();
+        }
         address.addressLine1 = args.addressLine1;
         address.addressLine2 = args.addressLine2;
         address.town = args.town;

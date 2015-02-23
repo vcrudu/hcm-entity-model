@@ -1,7 +1,5 @@
 var should = require('should');
-var assert = require("assert");
 var Patient = require("../entities/patient");
-var RelevantContact = require("../entities/relevantContact");
 
 describe("Patient", function () {
     describe("defaults", function () {
@@ -36,8 +34,8 @@ describe("Patient", function () {
             });
         });
 
-        it("Has Id", function () {
-            patient.name.should.equal("John");
+        it("Has id", function () {
+            /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i.test(patient.id).should.be.true;
         });
 
         it("Has name", function () {

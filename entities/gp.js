@@ -1,10 +1,21 @@
 var assert = require("assert");
+var uuid = require("node-uuid");
+var _ = require("underscore");
+
+var Address = require("./address");
+
 (function(){
     module.exports = function(args){
         assert.ok(args.name,"GP name is required!");
         assert.ok(args.practiceName,"Practice Name is required!");
         assert.ok(args.practiceIdentifier,"Practice Identifier is required!");
         var gp = {};
+
+        if(args.id) {
+            gp.id = args.id;
+        }else{
+            gp.id = uuid.v4();
+        }
 
         gp.name = args.name;
         gp.practiceName = args.practiceName;
@@ -13,11 +24,9 @@ var assert = require("assert");
 
         gp.contactDetails = [];
 
-        gp.addContactDetail(args.contactType, args.contact);
-
         gp.addContactDetail = function(contactType, contact){
-            assert.ok(args.contactType, "Contact type is required!");
-            assert.ok(args.contact, "Contact is required!");
+            assert.ok(contactType, "Contact type is required!");
+            assert.ok(contact, "Contact is required!");
             var contactDetail = _.find(this.contactDetails,function(contactType){return contactType.contactType==contactType;});
             if(contactDetail){
                 contactDetail.contact = contact;
@@ -25,6 +34,7 @@ var assert = require("assert");
                 this.contactDetails.push({contactType: contactType, contact: contact});
             }
         };
+
         return gp;
     };
 })();
