@@ -1,9 +1,13 @@
 var assert = require("assert");
-var Address = require("./address");
+var should = require('should');
 var uuid = require("node-uuid");
 var _ = require("underscore");
 
+var Address = require("./address");
 var RelevantContact = require("./relevantContact");
+var GP = require("./gp");
+var Device = require("./device");
+var HealthProblem = require("./healthProblem");
 
 (function(){
     module.exports = function(args){
@@ -17,7 +21,7 @@ var RelevantContact = require("./relevantContact");
         assert.ok(args.phone||args.mobile,"Phone or mobile number is required!");
         var patient = {};
         if(args.id) {
-            //TODO-HC assert the id is valid v4 uuid
+            assert.equals(/^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i.test(patient.id),true,"Id is not a valid v4 uuid!");
             patient.id = args.id;
         }else{
             patient.id = uuid.v4();
@@ -46,6 +50,10 @@ var RelevantContact = require("./relevantContact");
         patient.relevantContacts = [];
         patient.communicationPreference = args.communicationPreference;
         patient.address = new Address(args);
+        patient.avatar = args.avatar;
+        patient.externalId = args.externalId;
+        patient.devices = [];
+        patient.healthProblems = [];
 
         patient.getContactPreferences=function (){
                 return ['Phone', 'Mobile', 'Email', 'Letter'];
@@ -70,6 +78,32 @@ var RelevantContact = require("./relevantContact");
             });
             assert.ok(relevantContact, "The relevant contact does not exist!");
             relevantContact.addContactDetail(args.contactType, args.contact);
+        };
+
+        patient.attachGP=function(gp){
+            gp.should.be.an.instanceOf(Object).and.have.property('name');
+            gp.should.be.an.instanceOf(Object).and.have.property('practiceName');
+            gp.should.be.an.instanceOf(Object).and.have.property('practiceIdentifier');
+            patient.gp=gp;
+        };
+
+        patient.attachDevice=function(model,serialNumber,manufacturer,deviceType){
+            var existingDevice = _.find(this.devices,function(device){
+                return device.serialNumber==serialNumber && device.model==model &&
+                device.manufacturer==manufacturer && device.deviceType==deviceType;
+            });
+            assert.equal(existingDevice,undefined,"The device is already attached!");
+            patient.devices.push(new Device({model:model,serialNumber:serialNumber,
+                                            manufacturer:manufacturer,deviceType:deviceType}));
+        };
+
+        patient.addHealthProblem = function(problemType, date, description){
+            var healthProblem = new HealthProblem({problemType:problemType, date:date, description:description});
+            patient.healthProblems.push(healthProblem);
+        };
+
+        patient.getHealthProblems = function(){
+            return patient.healthProblems;
         };
 
         return patient;

@@ -1,5 +1,6 @@
 var should = require('should');
 var Patient = require("../entities/patient");
+var GP = require("../entities/gp");
 
 describe("Patient", function () {
     describe("defaults", function () {
@@ -109,6 +110,128 @@ describe("Patient", function () {
             patient.address.country.should.equal("United Kingdom");
             patient.address.longitude.should.equal(-0.158995);
             patient.address.latitude.should.equal(51.519912);
+        });
+    });
+    describe("Attach GP",function(){
+        var patient = {};
+
+        before(function () {
+            patient = new Patient({
+                    title: "Mr", name: "John", surname: "Smith",
+                    dateOfBirth: "01-01-1946", sex: "Male",
+                    gender: "Male",
+                    ethnicity: "European", nhsNumber: "943 476 5919",
+                    otherIdentifierType: "France", otherIdentifier: "12345678",
+                    email: "john.smith@test.com", phone: "+373 796 04494", mobile: "+373 796 04494",
+                    fax: "+373 796 04494", communicationPreference: "Phone",
+                    addressLine1: "92 Bathurst Gardens", addressLine2: "Second floor",
+                    town: "Great London", county: "London", country: "United Kingdom",
+                    longitude: -0.158995, latitude: 51.519912,
+                    postCode: "W1H 2JL"
+                }
+            );
+        });
+
+        it("Not accept anything other then GP object",function(){
+            patient.attachGP(new GP({name:"Dr. Michael Scott", practiceName:"Rowan Tree Surgery",
+                practiceIdentifier:"NHS0121",
+                addressLine1:"92 Bathurst Gardens", addressLine2 :"Second floor",
+                town:"Great London", county:"London", country:"United Kingdom",
+                longitude:-0.158995,latitude:51.519912,
+                postCode:"W1H 2JL"}));
+        });
+    });
+
+    describe("Attach Device",function(){
+        var patient = {};
+
+        before(function () {
+            patient = new Patient({
+                    title: "Mr", name: "John", surname: "Smith",
+                    dateOfBirth: "01-01-1946", sex: "Male",
+                    gender: "Male",
+                    ethnicity: "European", nhsNumber: "943 476 5919",
+                    otherIdentifierType: "France", otherIdentifier: "12345678",
+                    email: "john.smith@test.com", phone: "+373 796 04494", mobile: "+373 796 04494",
+                    fax: "+373 796 04494", communicationPreference: "Phone",
+                    addressLine1: "92 Bathurst Gardens", addressLine2: "Second floor",
+                    town: "Great London", county: "London", country: "United Kingdom",
+                    longitude: -0.158995, latitude: 51.519912,
+                    postCode: "W1H 2JL"
+                }
+            );
+        });
+
+        it("Device object is already attached",function(){
+            patient.attachDevice("PT307", "SN12345","A&D Medical", "BloodPressure");
+            try {
+                patient.attachDevice("PT307", "SN12345","A&D Medical", "BloodPressure");
+            }catch(error){
+                error.message.should.be.equal("The device is already attached!");
+            }
+        });
+
+        it("Device type not specified",function(){
+            try {
+                patient.attachDevice("PT307", "SN12345","A&D Medical");
+            }catch(error){
+                error.message.should.be.equal('Device type is required!');
+            }
+        });
+
+        it("Device manufacturer not specified",function(){
+            try {
+                patient.attachDevice("PT307", "SN12345");
+            }catch(error){
+                error.message.should.be.equal('Manufacturer is required!');
+            }
+        });
+
+        it("Device serial number not specified",function(){
+            try {
+                patient.attachDevice("PT307");
+            }catch(error){
+                error.message.should.be.equal("Serial number is required!");
+            }
+        });
+
+        it("Device model not specified",function(){
+            try {
+                patient.attachDevice();
+            }catch(error){
+                error.message.should.be.equal("Device model is required!");
+            }
+        });
+    });
+
+    describe("Add health problem",function(){
+        var patient = {};
+        var today = new Date();
+        before(function () {
+            patient = new Patient({
+                    title: "Mr", name: "John", surname: "Smith",
+                    dateOfBirth: "01-01-1946", sex: "Male",
+                    gender: "Male",
+                    ethnicity: "European", nhsNumber: "943 476 5919",
+                    otherIdentifierType: "France", otherIdentifier: "12345678",
+                    email: "john.smith@test.com", phone: "+373 796 04494", mobile: "+373 796 04494",
+                    fax: "+373 796 04494", communicationPreference: "Phone",
+                    addressLine1: "92 Bathurst Gardens", addressLine2: "Second floor",
+                    town: "Great London", county: "London", country: "United Kingdom",
+                    longitude: -0.158995, latitude: 51.519912,
+                    postCode: "W1H 2JL"
+                }
+            );
+        });
+
+        it("Health problem added successfully",function(){
+            patient.addHealthProblem("Head Pain", today, "Health problem description.");
+            var healthProblems = patient.getHealthProblems();
+            healthProblems.should.be.instanceof(Array).and.have.lengthOf(1);
+            healthProblems[0].should.be.instanceOf(Object);
+            healthProblems[0].problemType.should.be.equal("Head Pain");
+            healthProblems[0].date.should.be.equal(today);
+            healthProblems[0].description.should.be.equal("Health problem description.");
         });
     });
 });
