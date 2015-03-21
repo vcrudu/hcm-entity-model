@@ -28,7 +28,8 @@ var Address = require("./address");
         gp.addContactDetail = function(contactType, contact){
             assert.ok(contactType, "Contact type is required!");
             assert.ok(contact, "Contact is required!");
-            var contactDetail = _.find(this.contactDetails,function(contactType){return contactType.contactType==contactType;});
+            var contactDetail = _.find(this.contactDetails,function(contactType)
+            {return contactType.contactType==contactType;});
             if(contactDetail){
                 contactDetail.contact = contact;
             }else {
