@@ -1,6 +1,7 @@
 {
   "name": "hcm.domainmodel",
   "version": "1.0.2",
+  "main":"index.js",
   "devDependencies": {
     "grunt": "*",
     "grunt-contrib-jshint": "*",

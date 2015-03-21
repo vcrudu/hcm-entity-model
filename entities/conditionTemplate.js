@@ -1,29 +1,80 @@
 /**
  * Created by Victor on 21/03/2015.
  */
-
-/**
- * Created by Victor on 28/02/2015.
- */
 var assert = require("assert");
-var should = require("should");
 var uuid = require("node-uuid");
+var should = require("should");
 var _ = require("underscore");
 
 (function(){
     module.exports = function(args){
-        assert.ok(args.name,"Condition template name is required!");
-        assert.ok(args.formatedText,"Formatted text is required!");
-        assert.ok(args.type,"Condition template type is required!");
-
-        assert.notEqual(types.indexOf(args.type),-1, "Unknown condition template type!");
-
         var conditionTemplate = {};
 
+        assert.ok(args.name,"Condition template name is required!");
+        assert.ok(args.formatedText,"Formatted text is required!");
+
+        var parameterLocations = args.formatedText.match(/\{[0-9]\}/g);
+
+        assert.equal(_.every(parameterLocations, function(par){
+            return'{'+parameterLocations.indexOf(par)+'}'===par;
+        }),true);
+
+        assert.ok(args.type,"Condition template type is required!");
+        assert.ok(args.textParameters,"Text parameters should are required!");
+        assert.ok(_.find(types, function(type){
+            return type==args.type;
+        }), "Unknown condition template type!");
+
+        var parameters = [];
+
+        switch(args.type){
+            case 'RangeConditionDefinition':
+                conditionTemplate.parameters = ["min value","max value"];
+                break;
+            case 'SimpleConditionDefinition':
+                conditionTemplate.parameters = ["operator","value"];
+                break;
+            default : throw "Invalid condition template type";
+        }
+
         var types = ['RangeConditionDefinition', 'SimpleConditionDefinition'];
+        var operators = [
+            {
+                "Text": "equal",
+                "Value": "Equal"
+            },
+            {
+                "Text": "not equal",
+                "Value": "NotEqual"
+            },
+            {
+                "Text": "greater than",
+                "Value": "GreaterThan"
+            },
+            {
+                "Text": "greater than or equal",
+                "Value": "GreaterThanOrEqual"
+            },
+            {
+                "Text": "less than",
+                "Value": "LessThan"
+            },
+            {
+                "Text": "less than or equal",
+                "Value": "LessThanOrEqual"
+            }
+        ];
 
         conditionTemplate.getConditionTypes = function(){
           return types;
+        };
+
+        conditionTemplate.getOperators = function(){
+            return operators;
+        };
+
+        conditionTemplate.getParameters = function(){
+            return parameters;
         };
 
         if(args.id) {
