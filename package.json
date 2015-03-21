@@ -1,5 +1,5 @@
 {
-  "name": "hcm.registration",
+  "name": "hcm.domainmodel",
   "version": "1.0.2",
   "devDependencies": {
     "grunt": "*",
