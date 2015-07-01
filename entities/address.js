@@ -16,6 +16,7 @@ var uuid = require("node-uuid");
         }else{
             address.id = uuid.v4();
         }
+
         address.addressLine1 = args.addressLine1;
         address.addressLine2 = args.addressLine2;
         address.town = args.town;

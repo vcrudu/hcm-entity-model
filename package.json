@@ -1,5 +1,6 @@
 {
   "name": "hcm.domainmodel",
+  "description": "Package where all the healthcare entities are defined.",
   "version": "1.0.2",
   "main":"index.js",
   "devDependencies": {

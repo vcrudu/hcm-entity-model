@@ -16,10 +16,7 @@ var assert = require("assert");
 var uuid = require("node-uuid");
 var _ = require("underscore");
 
-
 (function () {
-    module.exports = function (args) {
-
         var entityFactory = {};
 
         entityFactory.createPatient =  function(args){
@@ -58,7 +55,5 @@ var _ = require("underscore");
             return new ConditionTemplate(args);
         };
 
-        return entityFactory;
-    };
-
+        module.exports = entityFactory;
 })();
