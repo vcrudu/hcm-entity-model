@@ -4,13 +4,14 @@ var GP = require("../entities/gp");
 var entitiesFactory = require("../index.js");
 
 describe("Patient", function () {
+    var dateOfBirth = new Date(1946,1,1,0,0,0,0);
     describe("defaults", function () {
         var patient = {};
 
         before(function () {
             patient = entitiesFactory.createPatient({
                     title: "Mr", name: "John", surname: "Smith",
-                    dateOfBirth: "01-01-1946", sex: "Male",
+                    dateOfBirth: dateOfBirth, sex: "Male",
                     gender: "Male",
                     ethnicity: "European", nhsNumber: "943 476 5919",
                     otherIdentifierType: "France", otherIdentifier: "12345678",
@@ -53,7 +54,7 @@ describe("Patient", function () {
         });
 
         it("Has date of birth", function () {
-            patient.dateOfBirth.should.equal("01-01-1946");
+            patient.dateOfBirth.should.equal(dateOfBirth);
         });
 
         it("Has patient sex", function () {
@@ -119,7 +120,7 @@ describe("Patient", function () {
         before(function () {
             patient = new Patient({
                     title: "Mr", name: "John", surname: "Smith",
-                    dateOfBirth: "01-01-1946", sex: "Male",
+                    dateOfBirth: dateOfBirth, sex: "Male",
                     gender: "Male",
                     ethnicity: "European", nhsNumber: "943 476 5919",
                     otherIdentifierType: "France", otherIdentifier: "12345678",
@@ -149,7 +150,7 @@ describe("Patient", function () {
         before(function () {
             patient = new Patient({
                     title: "Mr", name: "John", surname: "Smith",
-                    dateOfBirth: "01-01-1946", sex: "Male",
+                    dateOfBirth: dateOfBirth, sex: "Male",
                     gender: "Male",
                     ethnicity: "European", nhsNumber: "943 476 5919",
                     otherIdentifierType: "France", otherIdentifier: "12345678",
@@ -211,7 +212,7 @@ describe("Patient", function () {
         before(function () {
             patient = new Patient({
                     title: "Mr", name: "John", surname: "Smith",
-                    dateOfBirth: "01-01-1946", sex: "Male",
+                    dateOfBirth: dateOfBirth, sex: "Male",
                     gender: "Male",
                     ethnicity: "European", nhsNumber: "943 476 5919",
                     otherIdentifierType: "France", otherIdentifier: "12345678",
