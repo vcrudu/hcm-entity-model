@@ -1,13 +1,14 @@
 var should = require('should');
 var Patient = require("../entities/patient");
 var GP = require("../entities/gp");
+var entitiesFactory = require("../index.js");
 
 describe("Patient", function () {
     describe("defaults", function () {
         var patient = {};
 
         before(function () {
-            patient = new Patient({
+            patient = entitiesFactory.createPatient({
                     title: "Mr", name: "John", surname: "Smith",
                     dateOfBirth: "01-01-1946", sex: "Male",
                     gender: "Male",

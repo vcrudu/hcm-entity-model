@@ -2,11 +2,12 @@
   "name": "@vcrudu/hcm.domainmodel",
   "description": "Package where all the healthcare entities are defined.",
   "version": "1.0.3",
-  "main":"index.js",
+  "main": "index.js",
   "devDependencies": {
     "grunt": "*",
     "grunt-contrib-jshint": "*",
-    "grunt-contrib-watch": "*"
+    "grunt-contrib-watch": "*",
+    "mocha": "^2.2.5"
   },
   "dependencies": {
     "node-uuid": "^1.4.2",

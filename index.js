@@ -2,15 +2,15 @@
  * Created by Victor on 07/03/2015.
  */
 
-var Patient = require("../entities/patient");
-var GP = require("../entities/gp");
-var Address = require("../entities/address");
-var Device = require("../entities/device");
-var HealthProblem = require("../entities/healthProblem");
-var Rule = require("../entities/rule");
-var Condition = require("../entities/condition");
-var ConditionTemplate = require("../entities/conditionTemplate");
-var RelevantContact = require("../entities/relevantContact");
+var Patient = require("./entities/patient");
+var GP = require("./entities/gp");
+var Address = require("./entities/address");
+var Device = require("./entities/device");
+var HealthProblem = require("./entities/healthProblem");
+var Rule = require("./entities/rule");
+var Condition = require("./entities/condition");
+var ConditionTemplate = require("./entities/conditionTemplate");
+var RelevantContact = require("./entities/relevantContact");
 
 var assert = require("assert");
 var uuid = require("node-uuid");

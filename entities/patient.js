@@ -11,6 +11,7 @@ var HealthProblem = require("./healthProblem");
 
 (function(){
     module.exports = function(args){
+        assert.ok(args.email,"Email is required!");
         assert.ok(args.name,"Name is required!");
         assert.ok(args.surname,"Surname is required!");
         assert.ok(args.title,"Title is required!");
