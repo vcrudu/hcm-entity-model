@@ -35,6 +35,8 @@ var HealthProblem = require("./healthProblem");
         patient.gender = args.gender;
         patient.ethnicity = args.ethnicity;
         patient.nhsNumber = args.nhsNumber;
+        patient.weight = args.weight;
+        patient.height = args.height;
         if(args.otherIdentifierType && args.otherIdentifier) {
             patient.otherIdentifiers = [{
                 otherIdentifierType: args.otherIdentifierType,

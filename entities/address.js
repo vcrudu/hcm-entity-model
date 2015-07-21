@@ -3,7 +3,6 @@ var uuid = require("node-uuid");
 (function(){
     module.exports = function(args){
         assert.ok(args.addressLine1,"Address line 1 is required!");
-        assert.ok(args.addressLine2,"Address line 2 is required!");
         assert.ok(args.town,"Town is required!");
         assert.ok(args.county,"County is required!");
         assert.ok(args.country,"Country is required!");
