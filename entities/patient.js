@@ -15,7 +15,7 @@ var HealthProblem = require("./healthProblem");
         assert.ok(args.name,"Name is required!");
         assert.ok(args.surname,"Surname is required!");
         assert.ok(args.title,"Title is required!");
-        assert.equal(args.dateOfBirth instanceof Date,true,"Date of birth should be Date!");
+        assert.equal(args.dateOfBirth instanceof Date, true, "Date of birth should be Date!");
         assert.ok(args.gender,"Gender is required!");
         assert.ok(args.ethnicity,"Ethnicity is required!");
         assert.ok(args.nhsNumber,"NHS number is required!");

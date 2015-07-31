@@ -10,7 +10,7 @@ describe("Rule", function () {
 
         before(function(){
             rule = new Rule({name:"High temperature", severity:"High"});
-            rule.addCondition
+
         });
 
         it("Has name", function () {
