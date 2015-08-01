@@ -6,6 +6,7 @@ var Patient = require("./entities/patient");
 var GP = require("./entities/gp");
 var Address = require("./entities/address");
 var Device = require("./entities/device");
+var DeviceModel = require("./entities/deviceModel");
 var HealthProblem = require("./entities/healthProblem");
 var Rule = require("./entities/rule");
 var Condition = require("./entities/condition");
@@ -25,6 +26,10 @@ var _ = require("underscore");
 
         entityFactory.createDevice =  function(args){
             return new Device(args);
+        };
+
+        entityFactory.createDeviceModel =  function(args) {
+            return new DeviceModel(args);
         };
 
         entityFactory.createGP =  function(args){
