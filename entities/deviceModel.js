@@ -77,7 +77,7 @@ var url = require("url");
         };
         deviceModel.addImagesUrls = function(images){
             for(var i=0; i<images.length; i++) {
-                assert.ok(images[i] instanceof HTMLImageElement,"Should be a string!");
+                assert.ok(images[i] instanceof HTMLImageElement,"Should be a Image!");
                 if(!_.contains(imagesUrls, images[i]))
                     imagesUrls.push(images[i]);
             }
