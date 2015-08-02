@@ -30,7 +30,7 @@ var _ = require("underscore");
         var condition = {};
 
         if(args.id) {
-            assert.equal(/^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i.test(condition.id),true,"Id is not a valid v4 uuid!");
+            assert.equal(/^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i.test(args.id),true,"Id is not a valid v4 uuid!");
             condition.id = args.id;
         }else{
             condition.id = uuid.v4();
