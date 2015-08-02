@@ -54,7 +54,7 @@ var HealthProblem = require("./healthProblem");
         patient.communicationPreference = args.communicationPreference;
 
         if(args.address)
-            patient.address = address;
+            patient.address = args.address;
         else
             patient.address = new Address(args);
 
