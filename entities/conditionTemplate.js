@@ -78,7 +78,7 @@ var _ = require("underscore");
         };
 
         if(args.id) {
-            assert.equals(/^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i.test(rule.id),true,"Id is not a valid v4 uuid!");
+            assert.equal(/^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i.test(rule.id),true,"Id is not a valid v4 uuid!");
             conditionTemplate.id = args.id;
         }else{
             conditionTemplate.id = uuid.v4();

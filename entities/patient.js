@@ -22,7 +22,7 @@ var HealthProblem = require("./healthProblem");
         assert.ok(args.phone||args.mobile,"Phone or mobile number is required!");
         var patient = {};
         if(args.id) {
-            assert.equals(/^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i.test(patient.id),true,"Id is not a valid v4 uuid!");
+            assert.equal(/^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i.test(patient.id),true,"Id is not a valid v4 uuid!");
             patient.id = args.id;
         }else{
             patient.id = uuid.v4();

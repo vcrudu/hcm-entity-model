@@ -14,7 +14,7 @@ var _ = require("underscore");
         var healthProblem = {};
 
         if(args.id) {
-            assert.equals(/^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i.test(healthProblem.id),true,"Id is not a valid v4 uuid!");
+            assert.equal(/^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i.test(healthProblem.id),true,"Id is not a valid v4 uuid!");
             healthProblem.id = args.id;
         }else{
             healthProblem.id = uuid.v4();
