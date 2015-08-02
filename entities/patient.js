@@ -52,7 +52,12 @@ var HealthProblem = require("./healthProblem");
         patient.email = args.email;
         patient.relevantContacts = [];
         patient.communicationPreference = args.communicationPreference;
-        patient.address = new Address(args);
+
+        if(args.address)
+            patient.address = address;
+        else
+            patient.address = new Address(args);
+
         patient.avatar = args.avatar;
         patient.externalId = args.externalId;
         patient.devices = [];
