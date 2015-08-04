@@ -12,7 +12,7 @@ var Address = require("./address");
         var gp = {};
 
         if(args.id) {
-            assert.equals(/^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i.test(gp.id),true,"Id is not a valid v4 uuid!");
+            assert.equal(/^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i.test(args.id),true,"Id is not a valid v4 uuid!");
             gp.id = args.id;
         }else{
             gp.id = uuid.v4();
