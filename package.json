@@ -2,7 +2,7 @@
   "name": "@vcrudu/hcm.domainmodel",
   "description": "Package where all the healthcare entities are defined.",
   "version": "1.0.8",
-  "repository":"https://github.com/vcrudu/hcm.domainmodel.git",
+  "repository": "https://github.com/vcrudu/hcm.domainmodel.git",
   "main": "index.js",
   "devDependencies": {
     "grunt": "*",
@@ -13,6 +13,7 @@
   "dependencies": {
     "node-uuid": "^1.4.2",
     "should": "^4.6.2",
-    "underscore": "^1.7.0"
+    "underscore": "^1.7.0",
+    "validator": "^4.0.1"
   }
 }

@@ -4,11 +4,12 @@
 var assert = require("assert");
 var _ = require("underscore");
 var url = require("url");
+var validator = require("validator");
 
 
 
 (function(){
-    function IsURL(str) {
+    /*function IsURL(str) {
 
         var strRegex = "^((https|http|ftp)?://)"
             + "?(([0-9a-z_!~*'().&=+$%-]+: )?[0-9a-z_!~*'().&=+$%-]+@)?" //ftp?user@
@@ -22,7 +23,7 @@ var url = require("url");
             + "(/[0-9a-z_!~*'().;?:@&=+$,%#-]+)+/?)$";
         var re = new RegExp(strRegex);
         return re.test(str);
-    }
+    }*/
 
     module.exports = function(args){
         assert.ok(args.model,"Device model is required!");
@@ -36,7 +37,7 @@ var url = require("url");
 
         for(var i=0; i<args.imagesUrls.length; i++){
             var temp = args.imagesUrls[i];
-            assert.ok(IsURL(temp), "Image " + temp + " isn't URL!");
+            assert.equal(validator.isURL(temp),true, "Image " + temp + " isn't URL!");
 
         }
 
@@ -68,7 +69,7 @@ var url = require("url");
 
         deviceModel.addDeviceModelSpecifications = function(specs){
             for(var i=0; i<specs.length; i++) {
-                assert.ok(specs[i] instanceof String,"Should be a string!");
+                assert.equal(validator.isURL(specs[i]),true,"Should be an URL to image!");
                 if(!_.contains(specifications, specs[i]))
                     specifications.push(specs[i]);
             }
@@ -79,7 +80,7 @@ var url = require("url");
         };
         deviceModel.addImagesUrls = function(images){
             for(var i=0; i<images.length; i++) {
-                assert.ok(images[i] instanceof HTMLImageElement,"Should be a Image!");
+                assert.equal(validator.isURL(temp),true,"Should be a Image!");
                 if(!_.contains(imagesUrls, images[i]))
                     imagesUrls.push(images[i]);
             }
