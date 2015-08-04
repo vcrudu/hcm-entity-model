@@ -69,7 +69,7 @@ var validator = require("validator");
 
         deviceModel.addDeviceModelSpecifications = function(specs){
             for(var i=0; i<specs.length; i++) {
-                assert.equal(validator.isURL(specs[i]),true,"Should be an URL to image!");
+                assert.equal(!(specs[i] instanceof String), true, "Specification should be a string!");
                 if(!_.contains(specifications, specs[i]))
                     specifications.push(specs[i]);
             }
