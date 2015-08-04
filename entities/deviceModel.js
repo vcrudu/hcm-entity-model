@@ -32,7 +32,7 @@ var validator = require("validator");
         assert.equal(typeof args.price, "number", "Price is required be a number!");
         assert.ok(args.specifications,"Specifications is required!");
         assert.ok(args.manufacturerUrl,"Manufacturer Url is required!");
-        assert.ok(IsURL(args.manufacturerUrl),"Manufacturer isn't URL!");
+        assert.ok(validator.isURL(args.manufacturerUrl),"Manufacturer isn't URL!");
         assert.ok(args.imagesUrls,"Image is required!");
 
         for(var i=0; i<args.imagesUrls.length; i++){
