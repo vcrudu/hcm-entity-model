@@ -80,7 +80,7 @@ var validator = require("validator");
         };
         deviceModel.addImagesUrls = function(images){
             for(var i=0; i<images.length; i++) {
-                assert.equal(validator.isURL(temp),true,"Should be a Image!");
+                assert.equal(validator.isURL(temp),true,"Should be a URL!");
                 if(!_.contains(imagesUrls, images[i]))
                     imagesUrls.push(images[i]);
             }
