@@ -29,13 +29,35 @@ describe("DeviceModel", function () {
             temp.length.should.equal(2);
             temp[0].should.equal("Negru");
             temp[1].should.equal("Alb");
+
         });
+
+        it("Has add specifications", function () {
+
+            deviceModel.addDeviceModelSpecifications(["Sur"]);
+            var temp = deviceModel.getDeviceModelSpecifications();
+            temp.length.should.equal(3);
+            temp[0].should.equal("Negru");
+            temp[1].should.equal("Alb");
+            temp[2].should.equal("Sur");
+        });
+
+
 
         it("Has images", function () {
             var temp = deviceModel.getImagesUrls();
             temp.length.should.equal(2);
             temp[0].should.equal("http://image1.jpg");
             temp[1].should.equal("http://image2.jpg");
+        });
+
+        it("Has add images", function () {
+            deviceModel.addImagesUrls(["http://image3.jpg"]);
+            var temp = deviceModel.getImagesUrls();
+            temp.length.should.equal(3);
+            temp[0].should.equal("http://image1.jpg");
+            temp[1].should.equal("http://image2.jpg");
+            temp[2].should.equal("http://image3.jpg");
         });
 
 
