@@ -87,6 +87,16 @@ var validator = require("validator");
         };
 
 
+        deviceModel.getDto = function(){
+            return {model:deviceModel.model,
+                description:deviceModel.description,
+                price:deviceModel.price,
+                specifications:specifications,
+                manufacturerUrl:deviceModel.manufacturerUrl,
+                imagesUrls:imagesUrls,
+                deviceModelType:deviceModel.deviceModelType
+            };
+        };
 
         return deviceModel;
     };

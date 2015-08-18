@@ -46,9 +46,20 @@ describe("DeviceModel", function () {
         it("Has deviceType", function () {
             deviceModel.deviceModelType.should.equal("BloodPressure");
         });
+
+        it("Returns dto", function () {
+            var dto = deviceModel.getDto();
+            dto.model.should.equal("PT307");
+            dto.price.should.equal(2.95);
+            dto.description.should.equal("SN12345");
+            dto.specifications[0].should.equal( "Negru");
+            dto.specifications[1].should.equal( "Alb");
+            dto.manufacturerUrl.should.equal("http://example.com");
+            dto.imagesUrls[0].should.equal("http://image1.jpg");
+            dto.imagesUrls[1].should.equal("http://image2.jpg");
+            dto.deviceModelType.should.equal("BloodPressure");
+        });
     });
-
-
 });
 
 
