@@ -3,4 +3,4 @@ version 1.0.3 has been added README.md file
 
 version 1.0.5 
 
-    fixed patient dateOfBirth to be Date 
+   This project is an example of a npm package that implements an entity model layer in a clean node.js microservice. 
